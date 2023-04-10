@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     # If this pull request is approved, reviewer is a member or a collaborator, and review body contains `!build`
     # or if it's manually dispatched in the Actions tab.
-    if: ${{ (github.event.action == 'pull_request_review' && contains(fromJson('["changes_requested","approved"]'), github.event.review.state) && contains(fromJson('["collaborator","member"]'), github.event.review.author_association) && endsWith(github.event.review.body, '!build')) || (github.event.action == 'workflow_dispatch') }}
+    if: ${{ (github.event_name == 'pull_request_review' && contains(fromJson('["changes_requested","approved"]'), github.event.review.state) && contains(fromJson('["collaborator","member"]'), github.event.review.author_association) && endsWith(github.event.review.body, '!build')) || (github.event_name == 'workflow_dispatch') }}
     concurrency:
         # Cancels the build if a new one is being ran
         group: ${{ github.workflow }}-${{ github.ref }}
