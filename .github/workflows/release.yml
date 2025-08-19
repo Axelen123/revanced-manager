@@ -64,7 +64,7 @@ jobs:
           TAG=$(git describe --tags --abbrev=0 --match 'v[0-9]*' $(git rev-parse HEAD))
           echo "LATEST_TAG=$TAG" >> $GITHUB_OUTPUT
 
-      - name: Semantic Release (App)
+      - name: Release
         run: npx multi-semantic-release --tag-format 'v${version}' --ignore-packages api
         env:
           GITHUB_ACTOR: ${{ github.actor }}
