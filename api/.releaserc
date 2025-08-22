@@ -17,18 +17,7 @@
     ],
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
-    [
-      "@semantic-release/exec",
-      {
-        "prepareCmd": "sed -i 's/^version =.*/version = ${nextRelease.version}/' gradle.properties"
-      }
-    ],
-    [
-      "@semantic-release/exec",
-      {
-        "publishCmd": "../gradlew publish"
-      }
-    ],
+    "gradle-semantic-release-plugin",
     [
       "@semantic-release/git",
       {
@@ -42,8 +31,8 @@
     [
       "@saithodev/semantic-release-backmerge",
       {
-        backmergeBranches: [{"from": "main", "to": "dev"}],
-        clearWorkspace: true
+        "backmergeBranches": [{"from": "main", "to": "dev"}],
+        "clearWorkspace": true
       }
     ]
   ]
